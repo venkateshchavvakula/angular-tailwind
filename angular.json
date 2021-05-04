@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tailwing-angular": {
+    "tailwind-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/tailwing-angular",
+            "outputPath": "dist/tailwind-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,7 +31,16 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "robots.txt",
+                "input": "src",
+                "output": "/"
+            }, {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
+            }
             ],
             "styles": [
               "src/styles.scss"
@@ -64,25 +73,27 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
             }
           }
         },
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "tailwing-angular:build"
+            "browserTarget": "tailwind-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tailwing-angular:build:production"
+              "browserTarget": "tailwind-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tailwing-angular:build"
+            "browserTarget": "tailwind-angular:build"
           }
         },
         "test": {
@@ -122,16 +133,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "tailwing-angular:serve"
+            "devServerTarget": "tailwind-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "tailwing-angular:serve:production"
+              "devServerTarget": "tailwind-angular:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "tailwing-angular"
+  "defaultProject": "tailwind-angular"
 }

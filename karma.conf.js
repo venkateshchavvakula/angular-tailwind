@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/tailwing-angular'),
+      dir: require('path').join(__dirname, './coverage/tailwind-angular'),
       subdir: '.',
       reporters: [
         { type: 'html' },
